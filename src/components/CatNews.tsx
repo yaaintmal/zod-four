@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 
+// importing new schema
+import { CatFactsApiResponseSchema } from "../schema/CatFact";
+import { z } from "zod"; // zoddy zod
+
 const API_URL = import.meta.env.VITE_API_URL;
 
 export default function CatNews() {
   const [fact, setFact] = useState("");
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>("null");
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     setLoading(true);
@@ -20,8 +24,10 @@ export default function CatNews() {
         }
 
         const apiResponse = await res.json();
+        console.log("the catty api responded:", apiResponse);
 
-        const factArray = apiResponse.data;
+        const validatedResponse = CatFactsApiResponseSchema.parse(apiResponse);
+        const factArray = validatedResponse.data;
 
         if (Array.isArray(factArray) && factArray.length > 0) {
           const randomIndex = Math.floor(Math.random() * factArray.length);
@@ -34,7 +40,12 @@ export default function CatNews() {
       } catch (err) {
         console.error("Fetch error 🙀:", err);
         let errorMessage = "I just can't handle dis ish.. 😿";
-        if (err instanceof Error) {
+
+        if (err instanceof z.ZodError) {
+          errorMessage = `Data validation failed: ${err.issues
+            .map((e) => e.path.join(".") + ": " + e.message)
+            .join("; ")}`;
+        } else if (err instanceof Error) {
           errorMessage = err.message;
         } else if (typeof err === "string") {
           errorMessage = err;
