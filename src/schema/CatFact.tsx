@@ -15,10 +15,8 @@ export const CatFactsApiResponseSchema = z.object({
     .object({
       current_page: z.number().int().nonnegative().optional(),
     })
-    // .passthrough() / does the method still exist?
     .optional(),
 });
-// .passthrough();
 
 export type CatFactsApiResponse = z.infer<typeof CatFactsApiResponseSchema>;
 export type CatFact = z.infer<typeof CatFactSchema>;
