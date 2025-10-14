@@ -68,3 +68,18 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* customs */
+.module-border-wrap {
+  width: 50rem;
+  padding: 2em;
+  position: relative;
+  background: linear-gradient(to right, yellow, orange);
+  padding: 3px;
+}
+
+.module {
+  background: #222;
+  color: white;
+  padding: 2rem;
+}

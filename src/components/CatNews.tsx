@@ -71,9 +71,11 @@ export default function CatNews() {
 
   return (
     <>
-      <div>Did you know?</div>
-      <p style={{ fontStyle: "italic", fontWeight: "bold" }}>{fact}</p>
-      <h2 className="text-amber-100 lowercase tracking-widest text-shadow-xs text-xs drop-shadow-lg text-right pt-2">
+      <div className="capitalize text-sm">Did you know?</div>
+      <p className="font-bold italic tracking-wide text-trans bg-gradient-to-bl from-amber-100 via-amber-200 to-amber-400 bg-clip-text">
+        {fact}
+      </p>
+      <h2 className="text-amber-100 font-light lowercase tracking-widest text-shadow-xs text-xs drop-shadow-lg text-right pt-2">
         Random Cat Fact
       </h2>
     </>
