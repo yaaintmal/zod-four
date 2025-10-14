@@ -72,14 +72,14 @@ button:focus-visible {
 /* customs */
 .module-border-wrap {
   width: 50rem;
-  padding: 2em;
   position: relative;
-  background: linear-gradient(to right, yellow, orange);
-  padding: 3px;
+  background: linear-gradient(to right, orange, orange, yellow, orange);
+  padding: 1.2px;
+  border-radius: 42px;
 }
 
 .module {
-  background: #222;
+  background: #242424;
   color: white;
   padding: 2rem;
 }
