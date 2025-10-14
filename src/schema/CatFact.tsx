@@ -6,7 +6,7 @@ const CatFactSchema = z.object({
   fact: z.string().min(1, "fact can't be empty 😿"),
   length: z.number().int().nonnegative().optional(),
 });
-// api gives array but we want an obj with data prop
+// api returns an array but we want an obj with data prop
 // code expects: validatedResponse.data
 
 export const CatFactsApiResponseSchema = z.object({
