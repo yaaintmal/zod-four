@@ -4,6 +4,7 @@ const CatFactSchema = z.object({
   // refac again: back to fact from text, oc!
 
   fact: z.string().min(1, "fact can't be empty 😿"),
+  // 1 means min 1 char
   length: z.number().int().nonnegative().optional(),
 });
 // api returns an array but we want an obj with data prop
